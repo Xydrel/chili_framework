@@ -138,6 +138,12 @@ LRESULT MainWindow::HandleMsg( HWND hWnd,UINT msg,WPARAM wParam,LPARAM lParam )
 
 		// ************ KEYBOARD MESSAGES ************ //
 	case WM_KEYDOWN:
+		if (lParam & VK_ESCAPE)
+		{
+			// jhoward: add functionality for a menu interface call here
+			PostQuitMessage(0);
+		}
+		break;
 		if( !(lParam & 0x40000000) || kbd.AutorepeatIsEnabled() ) // no thank you on the autorepeat
 		{
 			kbd.OnKeyPressed( static_cast<unsigned char>(wParam) );
